@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>原型预览-手机版</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; background:#0f172a; color:#fff; padding-bottom:80px; }
+  .header { position:sticky; top:0; z-index:100; background:rgba(15,23,42,0.95); backdrop-filter:blur(10px); padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.1); }
+  .header h1 { font-size:16px; font-weight:600; }
+  .header p { font-size:12px; color:#94a3b8; margin-top:2px; }
+  .tabs { display:flex; gap:8px; padding:12px 16px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
+  .tabs::-webkit-scrollbar { display:none; }
+  .tab { flex-shrink:0; padding:6px 14px; border-radius:20px; font-size:13px; background:rgba(255,255,255,0.08); color:#cbd5e1; border:none; cursor:pointer; white-space:nowrap; }
+  .tab.active { background:#3b82f6; color:#fff; }
+  .gallery { padding:0 16px 16px; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .card { background:rgba(255,255,255,0.06); border-radius:12px; overflow:hidden; cursor:pointer; transition:transform 0.2s; }
+  .card:active { transform:scale(0.97); }
+  .card img { width:100%; height:auto; display:block; }
+  .card .title { padding:10px 12px; font-size:13px; font-weight:500; color:#e2e8f0; }
+  .overlay { position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.92); display:none; flex-direction:column; }
+  .overlay.active { display:flex; }
+  .overlay-header { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.1); }
+  .overlay-header span { font-size:14px; font-weight:600; }
+  .overlay-header button { background:none; border:none; color:#fff; font-size:22px; padding:4px; }
+  .overlay-img { flex:1; display:flex; align-items:center; justify-content:center; padding:16px; overflow:auto; }
+  .overlay-img img { max-width:100%; max-height:100%; border-radius:8px; }
+  .overlay-nav { display:flex; justify-content:space-between; padding:12px 16px; border-top:1px solid rgba(255,255,255,0.1); }
+  .overlay-nav button { background:rgba(255,255,255,0.1); border:none; color:#fff; padding:10px 20px; border-radius:8px; font-size:14px; }
+  .overlay-nav button:disabled { opacity:0.3; }
+  .hidden { display:none !important; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>国家知识产权产业运营综合服务平台</h1>
+  <p>原型预览 · 手机版</p>
+</div>
+<div class="tabs">
+  <button class="tab active" onclick="filterTab(this,'all')">全部</button>
+  <button class="tab" onclick="filterTab(this,'public')">公众访客</button>
+  <button class="tab" onclick="filterTab(this,'admin')">平台管理员</button>
+  <button class="tab" onclick="filterTab(this,'operator')">运营方</button>
+  <button class="tab" onclick="filterTab(this,'expert')">评审专家</button>
+</div>
+<div class="gallery" id="gallery"></div>
+
+<div class="overlay" id="overlay" onclick="closeOverlay(event)">
+  <div class="overlay-header">
+    <span id="overlayTitle">图片预览</span>
+    <button onclick="closeOverlayDirect()">&times;</button>
+  </div>
+  <div class="overlay-img" id="overlayImgWrap">
+    <img id="overlayImg" src="" alt="">
+  </div>
+  <div class="overlay-nav">
+    <button id="prevBtn" onclick="navigate(-1)">上一张</button>
+    <button id="nextBtn" onclick="navigate(1)">下一张</button>
+  </div>
+</div>
+
+<script>
+const images = [
+  {file:'01-首页.png',title:'首页',role:'public'},
+  {file:'02-全国大赛.png',title:'全国大赛',role:'public'},
+  {file:'03-大赛详情.png',title:'大赛详情',role:'public'},
+  {file:'04-专利对接大厅.png',title:'专利对接大厅',role:'public'},
+  {file:'05-专利详情.png',title:'专利详情',role:'public'},
+  {file:'06-产业服务.png',title:'产业服务',role:'public'},
+  {file:'07-交易撮合.png',title:'交易撮合',role:'public'},
+  {file:'08-挂牌详情.png',title:'挂牌详情',role:'public'},
+  {file:'09-数据中心.png',title:'数据中心',role:'public'},
+  {file:'10-项目信息.png',title:'项目信息',role:'public'},
+  {file:'11-项目详情.png',title:'项目详情',role:'public'},
+  {file:'12-注册页.png',title:'注册页',role:'public'},
+  {file:'13-报名结果查询.png',title:'报名结果查询',role:'public'},
+  {file:'14-个人中心.png',title:'个人中心',role:'public'},
+  {file:'15-管理后台首页.png',title:'管理后台首页',role:'admin'},
+  {file:'18-赛事管理.png',title:'赛事管理',role:'admin'},
+  {file:'19-专利管理.png',title:'专利管理',role:'operator'},
+  {file:'20-用户管理.png',title:'用户管理',role:'admin'},
+  {file:'21-渠道管理.png',title:'渠道管理',role:'admin'},
+  {file:'22-内容管理.png',title:'内容管理',role:'admin'},
+  {file:'23-运营方首页.png',title:'运营方首页',role:'operator'},
+  {file:'24-分赛场管理.png',title:'分赛场管理',role:'operator'},
+  {file:'25-报名审核.png',title:'报名审核',role:'operator'},
+  {file:'26-数据填报.png',title:'数据填报',role:'operator'},
+  {file:'27-专家评审首页.png',title:'专家评审首页',role:'expert'},
+  {file:'28-评审任务.png',title:'评审任务',role:'expert'},
+  {file:'29-评审历史.png',title:'评审历史',role:'expert'},
+  {file:'30-评审标准.png',title:'评审标准',role:'expert'},
+  {file:'31-我要挂牌弹窗.png',title:'我要挂牌弹窗',role:'public'},
+];
+
+let currentFilter = 'all';
+let currentIndex = 0;
+let filteredImages = [];
+
+function renderGallery() {
+  filteredImages = currentFilter === 'all' ? images : images.filter(i => i.role === currentFilter);
+  const gallery = document.getElementById('gallery');
+  gallery.innerHTML = filteredImages.map((img,idx) => `
+    <div class="card" data-role="${img.role}" onclick="openOverlay(${idx})">
+      <img src="${img.file}" alt="${img.title}" loading="lazy">
+      <div class="title">${img.title}</div>
+    </div>
+  `).join('');
+}
+
+function filterTab(btn, role) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = role;
+  renderGallery();
+}
+
+function openOverlay(idx) {
+  currentIndex = idx;
+  updateOverlay();
+  document.getElementById('overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateOverlay() {
+  const img = filteredImages[currentIndex];
+  document.getElementById('overlayImg').src = img.file;
+  document.getElementById('overlayTitle').textContent = `${currentIndex+1} / ${filteredImages.length} · ${img.title}`;
+  document.getElementById('prevBtn').disabled = currentIndex === 0;
+  document.getElementById('nextBtn').disabled = currentIndex === filteredImages.length - 1;
+}
+
+function closeOverlay(e) {
+  if (e.target === e.currentTarget || e.target.id === 'overlayImgWrap') {
+    closeOverlayDirect();
+  }
+}
+
+function closeOverlayDirect() {
+  document.getElementById('overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function navigate(dir) {
+  const newIdx = currentIndex + dir;
+  if (newIdx >= 0 && newIdx < filteredImages.length) {
+    currentIndex = newIdx;
+    updateOverlay();
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('overlay').classList.contains('active')) return;
+  if (e.key === 'Escape') closeOverlayDirect();
+  if (e.key === 'ArrowLeft') navigate(-1);
+  if (e.key === 'ArrowRight') navigate(1);
+});
+
+let touchStartX = 0;
+document.getElementById('overlayImgWrap').addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+document.getElementById('overlayImgWrap').addEventListener('touchend', e => {
+  const diff = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(diff) > 50) navigate(diff > 0 ? -1 : 1);
+});
+
+renderGallery();
+</script>
+</body>
+</html>
