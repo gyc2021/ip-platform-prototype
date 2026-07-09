@@ -421,9 +421,6 @@ select.form-control { cursor:pointer; }
     </div>
   </div>
 
-  <div style="text-align:right;margin-bottom:32px;">
-    <button class="btn btn-secondary btn-sm" onclick="showPublicPage('project-info-list')">查看更多 &rarr;</button>
-  </div>
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;"><h3 style="font-size:18px;margin:0;">热门专利推荐</h3><button class="btn btn-secondary btn-sm" onclick="showPublicPage('patent-hall')">查看更多 &rarr;</button></div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:32px;">
     <div class="card" style="cursor:pointer;" onclick="showPublicPage('patent-detail')">
@@ -462,131 +459,7 @@ select.form-control { cursor:pointer; }
 
 
 
-  <h3 style="font-size:18px;margin-bottom:16px;">平台工具</h3>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:32px;">
-    <a href="http://www.ctex.cn/" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#1a4a7a,#1a4a7add);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">国家知识产权运营（北京）交易服务平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">中国技术交易所</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#1a4a7a18;color:#1a4a7a;font-size:10px;font-weight:500;">交易服务</span>
-        </div>
-      </div>
-    </a>
-    <a href="https://www.stex.cn/" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#1a4a7a,#1a4a7add);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">国家知识产权运营（上海）交易服务平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">上海技术交易所</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#1a4a7a18;color:#1a4a7a;font-size:10px;font-weight:500;">交易服务</span>
-        </div>
-      </div>
-    </a>
-    <a href="https://www.szse.cn/" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#1a4a7a,#1a4a7add);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">国家知识产权运营（深圳）交易服务平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">深交所科技成果与知识产权交易中心</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#1a4a7a18;color:#1a4a7a;font-size:10px;font-weight:500;">交易服务</span>
-        </div>
-      </div>
-    </a>
-    <a href="https://www.creditchina.gov.cn/" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#92400e,#92400edd);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">全国知识产权质押信息平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">国家公共信用信息中心</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#92400e18;color:#92400e;font-size:10px;font-weight:500;">金融服务</span>
-        </div>
-      </div>
-    </a>
-    <a href="https://www.picc.com.cn/" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#92400e,#92400edd);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">国家知识产权保险综合服务试点平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">中国人民财产保险股份有限公司</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#92400e18;color:#92400e;font-size:10px;font-weight:500;">金融服务</span>
-        </div>
-      </div>
-    </a>
-    <a href="#" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#065f46,#065f46dd);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">国家知识产权运营（上海）国际服务平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">上海国际知识产权运营管理有限公司</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#065f4618;color:#065f46;font-size:10px;font-weight:500;">特色服务</span>
-        </div>
-      </div>
-    </a>
-    <a href="#" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#065f46,#065f46dd);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">国家知识产权运营（武汉）高校服务平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">中部知光技术转移有限公司、中国地质大学（武汉）</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#065f4618;color:#065f46;font-size:10px;font-weight:500;">特色服务</span>
-        </div>
-      </div>
-    </a>
-    <a href="#" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#065f46,#065f46dd);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">国家知识产权运营（陕西）先进技术转化平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">陕西融盛知识产权平台有限公司</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#065f4618;color:#065f46;font-size:10px;font-weight:500;">特色服务</span>
-        </div>
-      </div>
-    </a>
-    <a href="#" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#065f46,#065f46dd);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">国家知识产权运营（长三角）先进技术转化平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">先进技术成果长三角转化中心</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#065f4618;color:#065f46;font-size:10px;font-weight:500;">特色服务</span>
-        </div>
-      </div>
-    </a>
-    <a href="#" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#7e22ce,#7e22cedd);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">国家专利导航综合服务平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">中国专利保护协会</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#7e22ce18;color:#7e22ce;font-size:10px;font-weight:500;">工具支撑</span>
-        </div>
-      </div>
-    </a>
-    <a href="#" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#7e22ce,#7e22cedd);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">国家专利密集型产品备案认定试点平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">中国专利保护协会</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#7e22ce18;color:#7e22ce;font-size:10px;font-weight:500;">工具支撑</span>
-        </div>
-      </div>
-    </a>
-    <a href="#" target="_blank" class="card" style="padding:16px;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#7e22ce,#7e22cedd);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0;">&#128295;</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:4px;">全国知识管理标准化技术委员会标准推广应用综合服务平台</div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">北京国之合创新与知识产权研究院</div>
-          <span style="display:inline-block;padding:2px 8px;border-radius:4px;background:#7e22ce18;color:#7e22ce;font-size:10px;font-weight:500;">工具支撑</span>
-        </div>
-      </div>
-    </a>
-  </div>
 
-</div>
 
   <div class="main-content" style="padding:24px;max-width:1200px;margin:0 auto;">
   <!-- 产业服务 -->
